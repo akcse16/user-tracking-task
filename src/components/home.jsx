@@ -23,27 +23,6 @@ const Home = () => {
 				}
 			})
 			.catch((err) => console.log(err));
-
-		return () => {
-			let allCookies = getCookie() || {};
-			const cookieString = Object.keys(allCookies)
-				.map((cookieName) => `${cookieName}=${allCookies[cookieName]}`)
-				.join("; ");
-			let payload = {};
-			// axios
-			// 	.post(
-			// 		"http://localhost:3000/",
-			// 		{
-			// 			headers: {
-			// 				"Content-Type": "application/json",
-			// 				Cookie: cookieString,
-			// 			},
-			// 		},
-			// 		payload
-			// 	)
-			// 	.then((res) => console.log(res))
-			// 	.catch((err) => console.log(err));
-		};
 	}, []);
 
 	/**
@@ -51,7 +30,7 @@ const Home = () => {
 	 * accordingly, including incrementing or decrementing a value and copying text to the clipboard.
 	 */
 	const handleTrackingActions = (act) => {
-		let interactionDetails = getCookie("userIntraction");
+		let interactionDetails = getCookie("userInteraction");
 		if (act === "incr") {
 			interactionDetails = {
 				...interactionDetails,
@@ -77,7 +56,7 @@ const Home = () => {
 			copyToClipboard(inputVal);
 		}
 
-		setCookie("userIntraction", interactionDetails);
+		setCookie("userInteraction", interactionDetails);
 	};
 
 	/**
